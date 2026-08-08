@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --color-dark-bg: #1a1a1f;
+  --color-dark-surface: #222228;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  .dark {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-zinc-50 text-zinc-900 antialiased;
+    margin: 0;
+  }
+  .dark body {
+    background: var(--color-dark-bg);
+    color: #f4f4f5;
+  }
+}
+
+/* Date input styling for dark mode */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 2px;
+}
+.dark input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/* Dialog styling */
+dialog::backdrop {
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+}
+dialog {
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out both;
+}
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Success checkmark animation */
+@keyframes successCheck {
+  0% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.15); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-success-check {
+  animation: successCheck 0.5s ease-out both;
+}
+.success-check-path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: drawCheck 0.4s 0.2s ease-out forwards;
+}
+@keyframes drawCheck {
+  to { stroke-dashoffset: 0; }
+}

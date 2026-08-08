@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm uninstall react-bits)",
+      "Bash(npm run build)",
+      "Bash(npm uninstall three @react-three/fiber)"
+    ]
+  }
+}
