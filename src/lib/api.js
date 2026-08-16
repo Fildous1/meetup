@@ -12,24 +12,24 @@ async function request(url, options = {}) {
 }
 
 export function createEvent(payload) {
-  return request(`${BASE}/events.php`, {
+  return request(`${BASE}/events`, {
     method: 'POST',
     body: JSON.stringify(payload),
   })
 }
 
 export function getEvent(code) {
-  return request(`${BASE}/events.php?code=${encodeURIComponent(code)}&_t=${Date.now()}`)
+  return request(`${BASE}/events?code=${encodeURIComponent(code)}&_t=${Date.now()}`)
 }
 
 export function checkName(code, name) {
   return request(
-    `${BASE}/responses.php?code=${encodeURIComponent(code)}&name=${encodeURIComponent(name)}&_t=${Date.now()}`
+    `${BASE}/responses?code=${encodeURIComponent(code)}&name=${encodeURIComponent(name)}&_t=${Date.now()}`
   )
 }
 
 export function saveResponse(code, participantName, availability, comment, isEdit = false) {
-  return request(`${BASE}/responses.php`, {
+  return request(`${BASE}/responses`, {
     method: 'POST',
     body: JSON.stringify({
       code,

@@ -1,0 +1,4 @@
+# Zkopíruj jako .dev.vars pro lokální `npm run dev:api`.
+# V produkci nastav přes: npx wrangler secret put RESEND_API_KEY
+# Bez klíče aplikace funguje normálně, jen se neposílají e-mailové notifikace.
+RESEND_API_KEY=""

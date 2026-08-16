@@ -9,8 +9,10 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
   },
   server: {
+    // API obsluhuje `npm run dev:api` (wrangler dev) na portu 8787.
     proxy: {
-      '/api': 'http://localhost:8080',
+      '/api': 'http://localhost:8787',
     },
   },
+
 })

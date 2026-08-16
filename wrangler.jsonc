@@ -1,19 +1,42 @@
 {
+  "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "meetup",
+  "main": "worker/index.js",
   "compatibility_date": "2026-08-08",
-  "observability": {
-      "enabled": false,
-      "head_sampling_rate": 1,
-      "logs": {
-        "enabled": true,
-        "head_sampling_rate": 1,
-        "persist": true,
-        "invocation_logs": true
-      },
-      "traces": {
-        "enabled": false,
-        "persist": true,
-        "head_sampling_rate": 1
-      }
+
+  // Statický build Vite; Worker běží jen pro cesty, které nejsou souborem.
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "meetup-db",
+      "database_id": "3920450f-8375-4c86-8754-45606dd4abde"
     }
+  ],
+
+  "vars": {
+    "APP_BASE_URL": "https://meetup.filiprosa.cz",
+    "MAIL_FROM": "MeetUp <noreply@filiprosa.cz>"
+  },
+
+  // RESEND_API_KEY je secret: npx wrangler secret put RESEND_API_KEY
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "persist": true,
+      "invocation_logs": true
+    },
+    "traces": {
+      "enabled": false,
+      "persist": true,
+      "head_sampling_rate": 1
+    }
+  }
 }
