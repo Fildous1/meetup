@@ -4,6 +4,12 @@
   "main": "worker/index.js",
   "compatibility_date": "2026-08-08",
 
+  // Build frontendu patří sem, ne jen do nastavení Workers Builds — jinak
+  // `wrangler deploy` spadne na chybějícím dist/.
+  "build": {
+    "command": "npm run build"
+  },
+
   // Statický build Vite; Worker běží jen pro cesty, které nejsou souborem.
   "assets": {
     "directory": "./dist",

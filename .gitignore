@@ -4,3 +4,8 @@ dist/
 # Cloudflare Workers
 .wrangler/
 .dev.vars
+*.build.log
+
+# Exporty dat ze staré MySQL
+d381429_meetup.sql
+d1-import.sql
